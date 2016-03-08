@@ -60,12 +60,16 @@ class HangpersonApp < Sinatra::Base
     erb :show # You may change/remove this line
   end
   
-  post '/win' do
-    erb :win # You may change/remove this line
+  get '/win' do
+    if @game.check_win_or_lose == :win
+      erb :win # You may change/remove this line
+    else erb :new
+    end
   end
   
-  post '/lose' do
-    erb :lose # You may change/remove this line
+  get '/lose' do
+    if @game.check_win_or_lose == :lose
+      erb :lose # You may change/remove this line
+    else erb :new
+    end
   end
-  
-end
